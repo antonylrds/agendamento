@@ -1,15 +1,16 @@
-use agendamento::{Event, EventStore};
-use time::macros::date;
+use agendamento::model::Student;
+use agendamento::repository::Database;
 
 fn main() {
-    let mut store = EventStore::new();
+    let mut db = Database::new();
 
-    let id = store.add(Event {
-        name: "Standup".to_string(),
-        date: date!(2026 - 07 - 20),
+    let id = db.add_student(Student {
+        id: None,
+        name: "Ada".to_string(),
+        class: "Math".to_string(),
     });
 
-    if let Some(event) = store.get(id) {
-        println!("Event #{id}: {} on {}", event.name, event.date);
+    if let Some(student) = db.get_student(id) {
+        println!("Student #{id}: {} in {}", student.name, student.class);
     }
 }
