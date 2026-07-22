@@ -2,7 +2,8 @@ use time::UtcDateTime;
 
 use crate::model::{ClassId, RoomId};
 
-pub type ScheduleId = u64;
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+pub struct ScheduleId(pub u64);
 
 pub struct Schedule {
     pub id: Option<ScheduleId>,

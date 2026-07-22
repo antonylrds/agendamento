@@ -1,6 +1,7 @@
 use crate::model::Student;
 
-pub type ClassId = u64;
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+pub struct ClassId(pub u64);
 
 pub struct Class {
     pub id: Option<ClassId>,
